@@ -1,15 +1,17 @@
 var sliderInt = 1;
 var sliderNext = 2;
-var count = $("#slider > img").size();
+//var count = $('#slider').find('img').size();
+var $slider = $('#slider').find('img') //finds the image in the slider div
 
 
 $(document).ready(function() {
-	$("#slider > img#1").fadeIn(300);
+		
+	$('#slider').find('#1').fadeIn('slow');
 	startSlider();
 });
 
 function startSlider() {
-	var count = $("#slider > img").size();
+	count = $slider.size(); // make count a global variable
 	
 	loop = setInterval(function() {
 		
@@ -18,8 +20,8 @@ function startSlider() {
 				sliderInt = 1;			
 		}
 		
-		$("#slider > img").fadeOut(300);
-		$("#slider > img#" + sliderNext).fadeIn(300)
+		$slider.fadeOut('slow');
+		$('#slider').find('img#' + sliderNext).fadeIn('slow')
 		
 		sliderInt =  sliderNext;
 		sliderNext += 1;
@@ -51,8 +53,8 @@ function showSlide(id) {
 		id = count;
 	}
 		
-	$("#slider > img").fadeOut(300);
-	$("#slider > img#" + id).fadeIn(300)
+	$slider.fadeOut('slow');
+	$('#slider').find('img#' + id).fadeIn('slow')
 		
 	sliderInt = id;
 	sliderNext = id + 1;
@@ -60,7 +62,7 @@ function showSlide(id) {
 		
 }
 
-$('#slider > img').hover(
+$slider.hover(
 	function() {
 		stopLoop();
 	},
